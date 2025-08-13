@@ -1,0 +1,18 @@
+{
+    "private": true,
+    "name": "blog-monorepo",
+    "workspaces": [
+        "backend",
+        "frontend-public",
+        "frontend-admin"
+    ],
+    "scripts": {
+        "dev:backend": "npm --workspace backend run devStart",
+        "dev:public": "npm --workspace frontend-public run dev",
+        "dev:admin": "npm --workspace frontend-admin run dev",
+        "dev": "concurrently -n backend,public,admin -c red,green,blue \"npm run dev:backend\" \"npm run dev:public\" \"npm run dev:admin\""
+    },
+    "devDependencies": {
+        "concurrently": "^9.2.0"
+    }
+}
