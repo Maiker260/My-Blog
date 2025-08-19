@@ -22,15 +22,12 @@
     "homepage": "https://github.com/Maiker260/My-Blog#readme",
     "dependencies": {
         "@prisma/client": "^6.14.0",
-        "@quixo3/prisma-session-store": "^3.1.13",
         "bcryptjs": "^3.0.2",
         "dotenv": "^17.2.1",
         "ejs": "^3.1.10",
         "express": "^5.1.0",
-        "express-session": "^1.18.2",
         "express-validator": "^7.2.1",
-        "passport": "^0.7.0",
-        "passport-local": "^1.0.0"
+        "jsonwebtoken": "^9.0.2"
     },
     "devDependencies": {
         "nodemon": "^3.1.10",
