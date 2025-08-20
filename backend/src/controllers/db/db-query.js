@@ -1,6 +1,6 @@
 import prisma from "./prisma-client.js";
 
-export async function dbQuery(model, request, args) {
+export default async function dbQuery(model, request, args) {
     let formattedName;
 
     if (request === "find") {

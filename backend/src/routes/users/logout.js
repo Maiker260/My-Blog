@@ -1,15 +1,21 @@
 import express from "express";
+import findRefreshToken from "../../controllers/db/user/auth/find-refresh-token.js";
+import deleteRefreshToken from "../../controllers/db/user/auth/delete-refresh-token.js";
 
 const logoutRouter = express.Router();
 
-logoutRouter.delete("/", (req, res) => {
-    // Need to replace it to delete the refreshToken in the DB
-    // const index = refreshTokens.indexOf(req.body.token);
-    // if (index > -1) {
-    //     refreshTokens.splice(index, 1);
-    // }
+// If the users logs out, then, the refreshToken will be deleted.
+logoutRouter.delete("/", async (req, res) => {
+    const user = req.body.username;
 
-    res.sendStatus(204);
+    const refreshToken = req.body.token;
+    if (!refreshToken) return res.sendStatus(401);
+
+    const refreshTokenInDb = await findRefreshToken(user, refreshToken);
+    if (!refreshTokenInDb) return res.sendStatus(403);
+
+    const result = await deleteRefreshToken(refreshTokenInDb.token);
+    if (result) return res.sendStatus(204);
 });
 
 export default logoutRouter;

@@ -1,4 +1,4 @@
-import { dbQuery } from "../db-query.js";
+import dbQuery from "../db-query.js";
 
 export default async function addUser(user) {
     const args = {

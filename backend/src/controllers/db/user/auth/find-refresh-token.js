@@ -1,7 +1,7 @@
 import bcrypt from "bcryptjs";
 import findUser from "../find-user.js";
 
-export async function findRefreshToken(username, plainRefreshToken) {
+export default async function findRefreshToken(username, plainRefreshToken) {
     const user = await findUser(username, {
         refreshTokens: {
             where: {
@@ -13,6 +13,7 @@ export async function findRefreshToken(username, plainRefreshToken) {
 
     if (!user || user.refreshTokens.length === 0) return null;
 
+    // Find and return the token match
     for (const tokenRecord of user.refreshTokens) {
         const isTokenMatch = await bcrypt.compare(
             plainRefreshToken,

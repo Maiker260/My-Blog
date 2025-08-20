@@ -3,10 +3,10 @@
     "version": "1.0.0",
     "private": true,
     "description": "My-Blog",
-    "main": "src/index.js",
+    "main": "src/app.js",
     "scripts": {
-        "devStart": "nodemon index.js",
-        "start": "node src/index.js"
+        "devStart": "nodemon app.js",
+        "start": "node src/app.js"
     },
     "repository": {
         "type": "git",
