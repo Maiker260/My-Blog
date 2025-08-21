@@ -3,8 +3,8 @@
     "name": "blog-monorepo",
     "workspaces": [
         "backend",
-        "frontend-public",
-        "frontend-admin"
+        "frontend/frontend-public",
+        "frontend/frontend-admin"
     ],
     "scripts": {
         "dev:backend": "npm --workspace backend run devStart",
