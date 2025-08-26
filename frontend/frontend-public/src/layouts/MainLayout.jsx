@@ -1,14 +1,14 @@
 import Navbar from "./Navbar.jsx";
 import Sidebar from "./Sidebar.jsx";
+import BlogMain from "./BlogMain.jsx";
 
 function MainLayout() {
     return (
-        <div className="flex justify-center">
-            <div className="grid grid-cols-2 grid-rows-3 gap-2 w-full max-w-7xl mx-auto px-4 py-6">
-                <Navbar className={"col-span-2 justify-between"} />
-                <Sidebar className={"row-span-2 col-start-2 row-start-2"} />
-                <h1 className={"col-start-1 row-start-2"}>Tags</h1>
-                <h1>Content</h1>
+        <div className="flex flex-col content-center pt-3 min-h-screen">
+            <Navbar className="col-span-2 justify-between" />
+            <div className="flex-1 grid grid-cols-[1fr_auto] grid-rows-1 gap-10 w-full max-w-7xl mx-auto px-4 py-6">
+                <BlogMain />
+                <Sidebar />
             </div>
         </div>
     );

@@ -1,9 +1,10 @@
-function Navbar({ className }) {
+function Navbar() {
     return (
-        <section className={`flex ${className}`}>
-            <h1>My Blog</h1>
-            <h2>About</h2>
-        </section>
+        <nav className="w-full font-bold">
+            <div className="flex justify-between items-center max-w-7xl mx-auto px-4 py-2 text-4xl">
+                <h1>My Blog</h1>
+            </div>
+        </nav>
     );
 }
 
