@@ -13,3 +13,12 @@
         color: white;
     }
 }
+
+/* Hide scrollbar but keep scroll functionality */
+.scrollbar-none::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-none {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}

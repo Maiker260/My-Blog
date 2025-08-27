@@ -27,6 +27,9 @@ function TagsContainer() {
                 <Tag name={"HTML"} />
                 <Tag name={"HTML"} />
             </div>
+            <p className="underline hover:cursor-pointer hover:text-emerald-600 w-fit">
+                {">"} Show All
+            </p>
         </section>
     );
 }
