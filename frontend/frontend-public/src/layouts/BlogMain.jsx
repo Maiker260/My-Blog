@@ -1,9 +1,11 @@
-import BlogContainer from "../components/blog/BlogContainer.jsx";
+import PostsContainer from "../components/blog/PostsContainer.jsx";
+import BlogContainer from "./BlogContainer.jsx";
 
 function BlogMain() {
     return (
-        <div className="">
+        <div>
             <BlogContainer />
+            {/* <PostsContainer /> */}
         </div>
     );
 }
