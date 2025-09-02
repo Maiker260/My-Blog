@@ -1,6 +1,6 @@
 function Post() {
     return (
-        <article className="flex flex-col gap-18 bg-white text-black border border-b-black max-h-96 rounded p-6 hover:bg-blue-200 hover:cursor-pointer">
+        <article className="flex flex-col gap-18 bg-white text-neutral-800 border border-b-black max-h-96 rounded p-6 hover:bg-blue-200 hover:cursor-pointer">
             <div className="flex flex-col gap-4">
                 <div>
                     <h5 className="text-sm text-gray-500">

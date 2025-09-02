@@ -1,13 +1,14 @@
+import BlogHeader from "../components/blog/BlogHeader.jsx";
+import BlogBody from "../components/blog/BlogBody.jsx";
+import BlogComments from "../components/blog/BlogComments.jsx";
+
 function BlogContainer() {
     return (
-        <div className="bg-white p-4 h-full max-h-[calc(100vh-120px)] overflow-auto scrollbar-none rounded">
-            <h2 className="text-black">2</h2>
-            <h2 className="text-black">2</h2>
-            <h2 className="text-black">2</h2>
-            <h2 className="text-black">2</h2>
-            <h2 className="text-black">2</h2>
-            <h2 className="text-black">2</h2>
-        </div>
+        <section className="flex flex-col gap-15 bg-white p-6 h-full max-h-[calc(100vh-120px)] overflow-auto scrollbar-none rounded">
+            <BlogHeader />
+            <BlogBody />
+            <BlogComments />
+        </section>
     );
 }
 

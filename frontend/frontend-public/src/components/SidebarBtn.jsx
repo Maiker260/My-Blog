@@ -4,10 +4,11 @@ function SidebarBtn({ name, hasIcon = false }) {
     let icon = hasIcon ? <LightBulb /> : null;
 
     return (
-        <button className="flex items-center justify-center p-2 bg-emerald-700 rounded-sm hover:cursor-pointer hover:bg-emerald-600">
+        // NEED TO BE REPLACED WITH A "LINK TAG" AFTER SETTING UP THE REACT ROUTER
+        <a className="flex items-center justify-center text-base p-2 bg-emerald-700 rounded-sm hover:cursor-pointer hover:bg-emerald-600">
             <span>{name}</span>
             {icon}
-        </button>
+        </a>
     );
 }
 
