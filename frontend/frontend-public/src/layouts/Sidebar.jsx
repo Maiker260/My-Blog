@@ -7,7 +7,11 @@ function Sidebar() {
             <TagsContainer />
             <div className="flex flex-col gap-4">
                 <SidebarBtn name={"Suggest an Idea"} hasIcon />
-                <SidebarBtn name={"My Code "} />
+                <SidebarBtn
+                    name={"My Code "}
+                    redirectTo={"https://github.com/Maiker260/My-Blog"}
+                    newTab
+                />
                 <SidebarBtn name={"About"} />
             </div>
         </article>
