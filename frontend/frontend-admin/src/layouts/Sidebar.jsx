@@ -5,7 +5,6 @@ function Sidebar() {
         <article className="flex flex-col gap-18">
             {/* <TagsContainer /> */}
             <div className="flex flex-col gap-4">
-                <SidebarBtn name={"Suggest an Idea"} hasIcon />
                 <SidebarBtn
                     name={"My Code "}
                     redirectTo={"https://github.com/Maiker260/My-Blog"}
