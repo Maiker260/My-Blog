@@ -1,4 +1,3 @@
-import { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
@@ -37,31 +36,17 @@ const formats = [
     "image",
 ];
 
-export default function BlogContent({ onSave }) {
-    const [content, setContent] = useState("");
-
-    const handleSave = () => {
-        if (onSave) onSave(content);
-        console.log("Blog content:", content);
-    };
-
+export default function BlogContent({ value, onChange }) {
     return (
         <div className="bg-white shadow-md rounded-lg p-6 w-full max-w-6xl mx-auto">
             <ReactQuill
                 theme="snow"
-                value={content}
-                onChange={setContent}
+                value={value}
+                onChange={onChange}
                 modules={modules}
                 formats={formats}
                 className="bg-white rounded min-h-[300px]"
             />
-
-            <button
-                onClick={handleSave}
-                className="mt-4 px-6 py-2 bg-emerald-700 hover:bg-emerald-600 hover:cursor-pointer text-white font-semibold rounded transition"
-            >
-                Save Blog
-            </button>
         </div>
     );
 }

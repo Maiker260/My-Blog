@@ -1,9 +1,14 @@
-function Tag({ name }) {
+function Tag({ name, selected, onClick }) {
     return (
-        // NEED TO BE REPLACED WITH A "LINK TAG" AFTER SETTING UP THE REACT ROUTER
-        <a className="py-2 px-3 rounded-sm border border-b-neutral-700 hover:cursor-pointer hover:bg-emerald-600 hover:text-white hover:border-emerald-600">
+        <span
+            className={`px-3 py-1 rounded cursor-pointer ${
+                selected ? "bg-emerald-700 text-white" : "bg-gray-300"
+            }`}
+            onClick={onClick}
+        >
+            {" "}
             {name}
-        </a>
+        </span>
     );
 }
 

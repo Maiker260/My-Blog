@@ -3,7 +3,7 @@ import SidebarBtn from "../components/SidebarBtn.jsx";
 function Sidebar() {
     return (
         <article className="flex flex-col gap-18">
-            {/* <TagsContainer /> */}
+            <h2>Welcome Back, User!</h2>
             <div className="flex flex-col gap-4">
                 <SidebarBtn
                     name={"My Code "}

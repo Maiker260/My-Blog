@@ -9,4 +9,11 @@ postRouter.get("/", authenticateToken, async (req, res) => {
     res.json(user.posts);
 });
 
+postRouter.post("/", (req, res) => {
+    const data = req.body;
+
+    console.log(data);
+    res.json("Nice");
+});
+
 export default postRouter;
