@@ -8,8 +8,8 @@ const routes = [
         element: <MainLayout />,
         children: [
             { path: "/", element: <BlogList /> },
-            { path: "/edit", element: <BlogEditor /> },
-            // NEED TO ADD THE POST ID IN THE URL TO GET THE CORRECT POST
+            { path: "/new", element: <BlogEditor /> },
+            { path: "/edit/:id", element: <BlogEditor /> },
         ],
     },
     // {ERROR WEPBAGE},

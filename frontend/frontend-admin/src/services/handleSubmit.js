@@ -1,6 +1,9 @@
 import { savePost } from "./blog-service.js";
 
-export async function handleSubmit(e, { title, selectedTags, content, reset }) {
+export async function handleSubmit(
+    e,
+    { title, selectedTags, content, reset, navigate }
+) {
     e.preventDefault();
 
     if (!title.trim() || !content.trim()) {
@@ -20,6 +23,7 @@ export async function handleSubmit(e, { title, selectedTags, content, reset }) {
     console.log("Post saved:", result.data);
 
     reset();
+    navigate("/");
 }
 
 export default handleSubmit;

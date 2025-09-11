@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
 import { LightBulb } from "../icons/LightBulb.jsx";
 
-function SidebarBtn({ name, redirectTo, onClick, hasIcon = false, newTab }) {
+function SidebarBtn({
+    name = null,
+    redirectTo,
+    onClick,
+    hasIcon = false,
+    newTab,
+}) {
     let icon = hasIcon ? <LightBulb /> : null;
 
     const classes =
