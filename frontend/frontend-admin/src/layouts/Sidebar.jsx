@@ -14,12 +14,7 @@ function Sidebar() {
                 ) : (
                     <SidebarBtn name="Back to Home" redirectTo="/" />
                 )}
-                <SidebarBtn
-                    name={"My Code "}
-                    redirectTo={"https://github.com/Maiker260/My-Blog"}
-                    newTab
-                />
-                <SidebarBtn name={"About"} />
+                <SidebarBtn name={"Preview"} />
             </div>
         </article>
     );
