@@ -1,7 +1,15 @@
-export async function savePost(post) {
+export async function savePost(post, id) {
+    const userId = 1;
+    const isExistingPost = Boolean(id);
+
+    const method = isExistingPost ? "PUT" : "POST";
+    const postUrl = isExistingPost
+        ? `http://localhost:3000/api/users/${userId}/post/${id}`
+        : `http://localhost:3000/api/users/${userId}/post/`;
+
     try {
-        const response = await fetch("http://localhost:3000/api/posts/", {
-            method: "POST",
+        const response = await fetch(postUrl, {
+            method,
             headers: {
                 "Content-Type": "application/json",
             },

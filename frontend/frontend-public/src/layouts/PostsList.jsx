@@ -1,17 +1,15 @@
 import { useState, useEffect } from "react";
-import Post from "../components/Blog/blog-list/Post.jsx";
-import { getAllPosts } from "../services/blog/get-all-posts.js";
+import Post from "../components/blog/Post.jsx";
+import getAllPosts from "../services/get-all-posts.js";
 import Loading from "../components/Loading.jsx";
 
-// function BlogList(user) {
-function BlogList() {
+function PostsList() {
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // const data = await getAllPosts(user);
                 const data = await getAllPosts();
 
                 if (data.ok === false) {
@@ -34,14 +32,12 @@ function BlogList() {
     }
 
     return (
-        <section className="text-neutral-800 flex flex-col gap-2 bg-gray-100 p-6 h-full max-h-[calc(100vh-120px)] overflow-auto scrollbar-none rounded">
-            {posts.length === 0 ? (
-                <p className="text-gray-500">No posts available.</p>
-            ) : (
-                posts.map((pst) => <Post key={pst.id} {...pst} />)
-            )}
-        </section>
+        <div className="grid grid-cols-[repeat(auto-fill,_minmax(250px,_1fr))] gap-4 auto-rows-[350px]">
+            {posts.map((pst) => (
+                <Post key={pst.id} {...pst} />
+            ))}
+        </div>
     );
 }
 
-export default BlogList;
+export default PostsList;

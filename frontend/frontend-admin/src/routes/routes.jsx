@@ -1,6 +1,7 @@
 import MainLayout from "../layouts/MainLayout.jsx";
 import BlogEditor from "../layouts/BlogEditor.jsx";
 import BlogList from "../layouts/BlogList.jsx";
+import BlogPreview from "../layouts/BlogPreview.jsx";
 
 const routes = [
     {
@@ -8,8 +9,9 @@ const routes = [
         element: <MainLayout />,
         children: [
             { path: "/", element: <BlogList /> },
-            { path: "/new", element: <BlogEditor /> },
-            { path: "/edit/:id", element: <BlogEditor /> },
+            { path: "/post/new", element: <BlogEditor /> },
+            { path: "/post/edit/:id", element: <BlogEditor /> },
+            { path: "/post/preview/:id", element: <BlogPreview /> },
         ],
     },
     // {ERROR WEPBAGE},

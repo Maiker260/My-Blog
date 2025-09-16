@@ -3,12 +3,7 @@ import prisma from "./prisma-client.js";
 export default async function dbQuery(model, request, args) {
     let formattedName;
 
-    if (request === "find") {
-        request = "findUnique";
-        formattedName = "finding";
-    } else {
-        formattedName = request.slice(0, -1) + "ing";
-    }
+    formattedName = request.slice(0, -1) + "ing";
 
     try {
         const data = await prisma[model][request]?.(args);

@@ -1,8 +1,8 @@
-import { savePost } from "./blog-service.js";
+import { savePost } from "./blog/save-post.js";
 
 export async function handleSubmit(
     e,
-    { title, selectedTags, content, reset, navigate }
+    { id, title, selectedTags, content, reset, navigate }
 ) {
     e.preventDefault();
 
@@ -13,7 +13,7 @@ export async function handleSubmit(
 
     const post = { title, tags: selectedTags, content };
 
-    const result = await savePost(post);
+    const result = await savePost(post, id);
 
     if (!result.ok) {
         alert("Failed to save post. Please try again.");
