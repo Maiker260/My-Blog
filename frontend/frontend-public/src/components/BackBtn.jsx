@@ -4,7 +4,7 @@ import { LeftArrow } from "../icons/LeftArrow.jsx";
 function BackBtn() {
     return (
         <Link
-            className="text-neutral-800 inline-flex items-center gap-2 hover:underline w-fit"
+            className="text-neutral-800 font-bold inline-flex items-center gap-2 hover:underline w-fit"
             to="/"
         >
             <LeftArrow />

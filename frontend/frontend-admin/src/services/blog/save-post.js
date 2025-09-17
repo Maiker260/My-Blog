@@ -4,8 +4,8 @@ export async function savePost(post, id) {
 
     const method = isExistingPost ? "PUT" : "POST";
     const postUrl = isExistingPost
-        ? `http://localhost:3000/api/users/${userId}/post/${id}`
-        : `http://localhost:3000/api/users/${userId}/post/`;
+        ? `http://localhost:3000/api/users/${userId}/posts/${id}`
+        : `http://localhost:3000/api/users/${userId}/posts/new`;
 
     try {
         const response = await fetch(postUrl, {

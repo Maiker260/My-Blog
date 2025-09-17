@@ -23,6 +23,8 @@ function BlogContainer() {
             try {
                 const data = await getPost(id);
 
+                console.log(data.content);
+
                 setTitle(data.title);
                 setDate(data.createdAt);
                 setContent(data.content);

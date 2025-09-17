@@ -1,8 +1,9 @@
-export async function getPost(postId) {
-    const userId = 1;
+// export async function getUserTags(userId) {
+export async function getUserTags() {
+    const userId = "1";
 
     const response = await fetch(
-        `http://localhost:3000/api/users/${userId}/posts/${postId}`,
+        `http://localhost:3000/api/users/${userId}/tags/`,
         {
             method: "GET",
             headers: {

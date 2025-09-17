@@ -1,11 +1,8 @@
 import dbQuery from "../db-query.js";
 
-export default async function getUserTags(userId) {
+export default async function getAllTags() {
     const args = {
-        where: {
-            userId,
-        },
-        select: {
+        include: {
             name: true,
         },
     };

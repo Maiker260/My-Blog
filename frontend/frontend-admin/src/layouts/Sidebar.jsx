@@ -1,7 +1,9 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import SidebarBtn from "../components/SidebarBtn.jsx";
+import { saveUserTags } from "../services/tag/save-user-tags.js";
 
-function Sidebar() {
+function Sidebar({ selectedTags, setSelectedTags }) {
+    const navigate = useNavigate();
     const location = useLocation();
     const pathUrl = location.pathname;
 
@@ -14,7 +16,11 @@ function Sidebar() {
         mainButton = (
             <SidebarBtn name="Write a new Post" redirectTo="/post/new" />
         );
-    } else if (isEditRoute || pathUrl === "/post/new") {
+    } else if (
+        isEditRoute ||
+        pathUrl === "/post/new" ||
+        pathUrl === "/tag/edit"
+    ) {
         mainButton = (
             <SidebarBtn name="Back to Home" redirectTo="/" warnBeforeLeave />
         );
@@ -25,12 +31,30 @@ function Sidebar() {
         );
     }
 
+    const handleSaveTag = async () => {
+        await saveUserTags(selectedTags, navigate);
+        setSelectedTags([]);
+    };
+
     return (
         <article className="flex flex-col gap-18">
             <h2>Welcome Back, User!</h2>
             <div className="flex flex-col gap-4">
                 {mainButton}
-                {pathUrl === "/" ? <SidebarBtn name="Create New Tags" /> : null}
+                {pathUrl === "/" ? (
+                    <SidebarBtn
+                        name="Create New Tags"
+                        redirectTo={"/tag/edit"}
+                    />
+                ) : null}
+                {pathUrl === "/tag/edit" ? (
+                    <SidebarBtn
+                        name="Save Tags"
+                        onClick={handleSaveTag}
+                        warnBeforeLeave
+                        saveData
+                    />
+                ) : null}
                 {isEditRoute && (
                     <SidebarBtn
                         name="Preview"

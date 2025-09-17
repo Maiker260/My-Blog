@@ -7,7 +7,7 @@ import TagsContainer from "../components/Blog/blog-editor/TagsContainer.jsx";
 import SubmitBtn from "../components/SubmitBtn.jsx";
 import handleSubmit from "../services/handleSubmit.js";
 import { getPost } from "../services/blog/get-post.js";
-import { getUserTags } from "../services/blog/get-user-tags.js";
+import { getUserTags } from "../services/tag/get-user-tags.js";
 import Loading from "../components/Loading.jsx";
 import formatDate from "../utils/format-date.js";
 
@@ -118,7 +118,7 @@ function BlogEditor() {
                 <h2 className="text-3xl font-bold mb-4">Content:</h2>
                 <BlogContent value={content} onChange={setContent} />
             </section>
-            <SubmitBtn />
+            <SubmitBtn message={"Save Blog"} />
             {editMode ? <BlogComments comments={comments} /> : null}
         </form>
     );

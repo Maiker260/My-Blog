@@ -47,11 +47,13 @@ model Comment {
 
 model Tag {
   id     String @id @default(uuid())
-  name   String @unique
+  name   String
   user   User   @relation(fields: [userId], references: [id])
   userId String
 
   posts Post[] @relation("PostTags")
+
+  @@unique([userId, name])
 }
 
 model RefreshToken {

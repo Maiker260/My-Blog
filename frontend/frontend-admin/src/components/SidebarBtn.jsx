@@ -8,6 +8,7 @@ function SidebarBtn({
     hasIcon = false,
     newTab,
     warnBeforeLeave = false,
+    saveData = false,
 }) {
     const navigate = useNavigate();
     let icon = hasIcon ? <LightBulb /> : null;
@@ -17,9 +18,10 @@ function SidebarBtn({
 
     const handleClick = (e) => {
         if (warnBeforeLeave) {
-            const confirmed = window.confirm(
-                "You have unsaved changes. Are you sure you want to leave?"
-            );
+            const message = saveData
+                ? "Any unselected Tag will be deleted. Do you want to save the Tags selected?"
+                : "You have unsaved changes. Are you sure you want to leave?";
+            const confirmed = window.confirm(message);
             if (!confirmed) {
                 e.preventDefault();
                 return;

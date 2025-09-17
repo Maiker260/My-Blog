@@ -2,6 +2,7 @@ import MainLayout from "../layouts/MainLayout.jsx";
 import BlogEditor from "../layouts/BlogEditor.jsx";
 import BlogList from "../layouts/BlogList.jsx";
 import BlogPreview from "../layouts/BlogPreview.jsx";
+import TagEditor from "../layouts/TagEditor.jsx";
 
 const routes = [
     {
@@ -12,6 +13,7 @@ const routes = [
             { path: "/post/new", element: <BlogEditor /> },
             { path: "/post/edit/:id", element: <BlogEditor /> },
             { path: "/post/preview/:id", element: <BlogPreview /> },
+            { path: "/tag/edit", element: <TagEditor /> },
         ],
     },
     // {ERROR WEPBAGE},
