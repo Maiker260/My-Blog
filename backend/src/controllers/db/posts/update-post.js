@@ -3,19 +3,25 @@ import getTagsToRemove from "./utils/get-tags-to-remove.js";
 
 // export default async function updatePost(userId, postId, { title, tags, content }) {
 export default async function updatePost(postId, { title, tags, content }) {
+    const userId = "370dd59d-ede5-4ce8-ab9c-c33076d55ca7";
     const args = {
         where: {
             id: postId,
         },
         data: {
-            // user: { connect: { id: userId } },
-            user: { connect: { id: "2fff8fad-0ba8-4731-889f-b3112a6e1f5b" } },
+            user: { connect: { id: userId } },
             title,
             content,
             tags: {
-                connect: tags.map((tag) => ({ name: tag })),
+                connect: tags.map((tag) => ({
+                    userId_name: { userId, name: tag },
+                })),
 
-                disconnect: await getTagsToRemove(postId, tags),
+                disconnect: (await getTagsToRemove(postId, tags)).map(
+                    (tag) => ({
+                        userId_name: { userId, name: tag },
+                    })
+                ),
             },
         },
         include: {

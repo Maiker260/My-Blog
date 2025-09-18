@@ -17,8 +17,8 @@ function TagEditor() {
     }
 
     return (
-        <div className="flex flex-col items-center justify-center gap-2  text-neutral-800 bg-gray-100 p-6 h-full max-h-[calc(100vh-120px)] overflow-auto scrollbar-none rounded">
-            <section className="flex flex-col gap-12 items-center">
+        <div className="flex flex-col items-center justify-center gap-2 text-neutral-800 bg-gray-100 p-6 h-full max-h-[calc(100vh-120px)] overflow-auto rounded">
+            <section className="flex flex-col gap-6 sm:gap-8 md:gap-12 items-center">
                 <TagCreator
                     availableTags={availableTags}
                     setAvailableTags={setAvailableTags}

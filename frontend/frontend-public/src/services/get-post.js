@@ -1,5 +1,7 @@
+const API_URL = import.meta.env.VITE_API_URL;
+
 export default async function getPost(postId) {
-    const response = await fetch(`http://localhost:3000/api/posts/${postId}`, {
+    const response = await fetch(`${API_URL}/posts/${postId}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",

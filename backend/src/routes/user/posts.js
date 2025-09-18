@@ -4,6 +4,7 @@ import findUser from "../../controllers/db/user/find-user.js";
 import getPosts from "../../controllers/db/posts/get-post.js";
 import updatePost from "../../controllers/db/posts/update-post.js";
 import createPost from "../../controllers/db/posts/create-post.js";
+import deletePost from "../../controllers/db/posts/delete-post.js";
 
 const userPostsRouter = express.Router({ mergeParams: true });
 
@@ -54,6 +55,19 @@ userPostsRouter.put("/:postId", async (req, res) => {
     try {
         // const result = await updatePost(userId, postId, data);
         const result = await updatePost(postId, data);
+        res.json(result.success);
+    } catch (err) {
+        console.log("Found error: " + err);
+        throw err;
+    }
+});
+
+userPostsRouter.delete("/:postId", async (req, res) => {
+    const { userId, postId } = req.params;
+
+    try {
+        // const result = await updatePost(userId, postId, data);
+        const result = await deletePost(postId);
         res.json(result.success);
     } catch (err) {
         console.log("Found error: " + err);

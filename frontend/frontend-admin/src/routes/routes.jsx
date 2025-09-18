@@ -11,8 +11,8 @@ const routes = [
         children: [
             { path: "/", element: <BlogList /> },
             { path: "/post/new", element: <BlogEditor /> },
-            { path: "/post/edit/:id", element: <BlogEditor /> },
-            { path: "/post/preview/:id", element: <BlogPreview /> },
+            { path: "/posts/edit/:id", element: <BlogEditor /> },
+            { path: "/posts/preview/:id", element: <BlogPreview /> },
             { path: "/tag/edit", element: <TagEditor /> },
         ],
     },

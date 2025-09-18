@@ -10,10 +10,13 @@ import { getPost } from "../services/blog/get-post.js";
 import { getUserTags } from "../services/tag/get-user-tags.js";
 import Loading from "../components/Loading.jsx";
 import formatDate from "../utils/format-date.js";
+import LoadingBanner from "../components/LoadingBanner.jsx";
 
 function BlogEditor() {
     const [editMode, setEditMode] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [submitting, setSubmitting] = useState(false);
+
     const [availableTags, setAvailableTags] = useState([]);
     const [selectedTags, setSelectedTags] = useState([]);
     const [title, setTitle] = useState("");
@@ -74,18 +77,25 @@ function BlogEditor() {
 
     return (
         <form
-            onSubmit={(e) => {
-                handleSubmit(e, {
-                    id: id,
-                    title,
-                    selectedTags,
-                    content,
-                    reset: resetForm,
-                    navigate,
-                });
+            onSubmit={async (e) => {
+                setSubmitting(true);
+                try {
+                    await handleSubmit(e, {
+                        id,
+                        title,
+                        selectedTags,
+                        content,
+                        reset: resetForm,
+                        navigate,
+                    });
+                } finally {
+                    setSubmitting(false);
+                }
             }}
             className="text-neutral-800 flex flex-col gap-13 bg-gray-100 p-6 h-full max-h-[calc(100vh-120px)] overflow-auto scrollbar-none rounded"
         >
+            <LoadingBanner show={submitting} message="Saving blog post..." />
+
             <h1 className="text-5xl font-bold text-center">
                 {editMode ? "Edit" : "New"} Blog Post
             </h1>

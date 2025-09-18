@@ -3,7 +3,7 @@ import formatDate from "../../utils/format-date.js";
 function BlogComments({ comments }) {
     return (
         <section className="text-neutral-800 flex flex-col gap-12">
-            <h2 className="text-4xl font-bold ">20 Comments</h2>
+            <h2 className="text-4xl font-bold ">{comments.length} Comments</h2>
             <button className="w-full p-2 flex items-center justify-center bg-emerald-700 text-white text-lg font-semibold rounded-sm hover:cursor-pointer hover:bg-emerald-600">
                 Add Comment
             </button>

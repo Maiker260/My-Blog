@@ -13,6 +13,7 @@ const modules = {
         [{ indent: "-1" }, { indent: "+1" }], // indentation
         [{ align: [] }], // text alignment
         ["link", "image"], // links and images
+        ["code-block"], // code block button
         ["clean"], // remove formatting
     ],
 };
@@ -34,6 +35,7 @@ const formats = [
     "align",
     "link",
     "image",
+    "code-block",
 ];
 
 export default function BlogContent({ value, onChange }) {

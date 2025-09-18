@@ -1,11 +1,13 @@
-export async function savePost(post, id) {
+const API_URL = import.meta.env.VITE_API_URL;
+
+export async function savePost(post, postId) {
     const userId = 1;
-    const isExistingPost = Boolean(id);
+    const isExistingPost = Boolean(postId);
 
     const method = isExistingPost ? "PUT" : "POST";
     const postUrl = isExistingPost
-        ? `http://localhost:3000/api/users/${userId}/posts/${id}`
-        : `http://localhost:3000/api/users/${userId}/posts/new`;
+        ? `${API_URL}/users/${userId}/posts/${postId}`
+        : `${API_URL}/users/${userId}/posts/new`;
 
     try {
         const response = await fetch(postUrl, {

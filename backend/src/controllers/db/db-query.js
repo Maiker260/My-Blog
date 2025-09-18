@@ -1,16 +1,42 @@
 import prisma from "./prisma-client.js";
 
-export default async function dbQuery(model, request, args) {
-    let formattedName;
+// Maximum concurrent queries (adjustable for dev/prod)
+const MAX_CONCURRENT_QUERIES = process.env.NODE_ENV !== "production" ? 5 : 20;
 
-    formattedName = request.slice(0, -1) + "ing";
+let queue = [];
+let activeQueries = 0;
 
-    try {
-        const data = await prisma[model][request]?.(args);
+async function dbQuery(model, request, args) {
+    return new Promise((resolve, reject) => {
+        const execute = async () => {
+            activeQueries++;
+            try {
+                if (!prisma[model] || !prisma[model][request]) {
+                    throw new Error(
+                        `Invalid Prisma query: ${model}.${request}`
+                    );
+                }
 
-        return data;
-    } catch (err) {
-        console.log(`Error ${formattedName} the ${model}:`, err);
-        throw err;
-    }
+                const data = await prisma[model][request](args);
+                resolve(data);
+            } catch (err) {
+                console.error(`Error ${request} the ${model}:`, err);
+                reject(err);
+            } finally {
+                activeQueries--;
+                if (queue.length > 0) {
+                    const next = queue.shift();
+                    next();
+                }
+            }
+        };
+
+        if (activeQueries < MAX_CONCURRENT_QUERIES) {
+            execute();
+        } else {
+            queue.push(execute);
+        }
+    });
 }
+
+export default dbQuery;

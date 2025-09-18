@@ -13,8 +13,14 @@ function SidebarBtn({
     const navigate = useNavigate();
     let icon = hasIcon ? <LightBulb /> : null;
 
-    const classes =
-        "inline-flex justify-center items-center gap-1 text-base p-2 bg-emerald-700 rounded-sm hover:cursor-pointer hover:bg-emerald-600";
+    const baseClasses =
+        "inline-flex justify-center items-center gap-1 text-base p-2 rounded-sm hover:cursor-pointer";
+    const colorClasses =
+        name === "DELETE"
+            ? "bg-red-700 hover:bg-red-600 mb-1"
+            : "bg-emerald-700 hover:bg-emerald-600";
+
+    const classes = `${baseClasses} ${colorClasses}`;
 
     const handleClick = (e) => {
         if (warnBeforeLeave) {

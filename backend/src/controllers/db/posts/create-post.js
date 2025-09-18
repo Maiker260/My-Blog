@@ -9,10 +9,11 @@ export default async function createPost({ title, tags, content }) {
             title,
             content,
             tags: {
-                // NEED TO FIX THIS
                 connect: tags.map((tag) => ({
-                    userId,
-                    name: tag,
+                    userId_name: {
+                        userId,
+                        name: tag,
+                    },
                 })),
             },
         },

@@ -6,7 +6,7 @@ import formatDate from "../../../utils/format-date.js";
 function Post({ id, title, updatedAt, comments }) {
     return (
         <Link
-            to={`/post/edit/${id}`}
+            to={`/posts/edit/${id}`}
             className="flex flex-col gap-1 p-2 rounded group hover:bg-blue-200 hover:cursor-pointer"
         >
             <p className="text-sm text-gray-500">{formatDate(updatedAt)}</p>

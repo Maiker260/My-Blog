@@ -1,11 +1,11 @@
 const API_URL = import.meta.env.VITE_API_URL;
 
-// export async function getPosts(user) {
-export async function getAllPosts() {
+// export async function deletePost(post, postId, userId) {
+export async function deletePost(postId, navigate) {
     const userId = 1;
 
-    const response = await fetch(`${API_URL}/users/${userId}/posts`, {
-        method: "GET",
+    const response = await fetch(`${API_URL}/users/${userId}/posts/${postId}`, {
+        method: "DELETE",
         headers: {
             "Content-Type": "application/json",
         },
@@ -15,5 +15,5 @@ export async function getAllPosts() {
         throw new Error(`Response status: ${response.status}`);
     }
 
-    return await response.json();
+    navigate("/");
 }
