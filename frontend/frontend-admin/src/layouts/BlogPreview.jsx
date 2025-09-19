@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getPost } from "../services/blog/get-post.js";
-import BlogHeader from "../components/blog/blog-preview/BlogHeader.jsx";
-import BlogComments from "../components/blog/blog-preview/BlogComments.jsx";
+import BlogHeader from "../components/Blog/blog-preview/BlogHeader.jsx";
+import BlogBody from "../components/Blog/blog-preview/BlogBody.jsx";
+import BlogComments from "../components/Blog/blog-preview/BlogComments.jsx";
 import Loading from "../components/Loading.jsx";
-import BlogBody from "../components/blog/blog-preview/BlogBody.jsx";
 
 function BlogPreview() {
     const [title, setTitle] = useState();
