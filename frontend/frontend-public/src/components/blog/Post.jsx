@@ -30,7 +30,7 @@ function Post({ id, title, content, createdAt, comments }) {
                         <Comment />
                     </div>
                     <div className="flex gap-2 group-hover:underline">
-                        <p>Edit Post</p>
+                        <p>Read More</p>
                         <RightArrow fill={"oklch(44.6% 0.03 256.802)"} />
                     </div>
                 </div>
