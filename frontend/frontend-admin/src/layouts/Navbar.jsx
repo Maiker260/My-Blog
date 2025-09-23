@@ -4,10 +4,10 @@ function Navbar() {
     const location = useLocation();
     const pathUrl = location.pathname;
 
-    const isEditRoute = pathUrl.startsWith("/edit/");
+    const isEditRoute = pathUrl.startsWith("/posts/edit/");
 
     const handleClick = (e) => {
-        if (isEditRoute || pathUrl === "/new") {
+        if (isEditRoute || pathUrl === "/post/new" || pathUrl === "/tag/edit") {
             const confirmed = window.confirm(
                 "You have unsaved changes. Are you sure you want to leave?"
             );

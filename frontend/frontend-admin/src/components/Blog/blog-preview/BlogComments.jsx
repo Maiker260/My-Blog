@@ -8,7 +8,7 @@ function BlogComments({ comments }) {
                 Add Comment
             </button>
             <article className="flex flex-col gap-6">
-                <div className="text-base leading-relaxed flex flex-col gap-1.5">
+                <div className="text-base leading-relaxed flex flex-col gap-6">
                     {comments?.map((comment) => (
                         <div
                             className="text-base flex flex-col gap-1.5"
@@ -16,12 +16,14 @@ function BlogComments({ comments }) {
                         >
                             <p>
                                 <span className="font-semibold">
-                                    {comment.user.username}
+                                    {comment.username}
                                 </span>
                                 {" - "}
                                 {formatDate(comment.createdAt)}
                             </p>
-                            <p className="ml-6 italic">{comment.content}</p>
+                            <p className="ml-1 pl-4 border-l-2 border-gray-300 italic">
+                                {comment.content}
+                            </p>
                         </div>
                     ))}
                 </div>

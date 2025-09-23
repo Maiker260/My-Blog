@@ -5,7 +5,7 @@ function SidebarBtn({ name, redirectTo, onClick, hasIcon = false, newTab }) {
     let icon = hasIcon ? <LightBulb /> : null;
 
     const classes =
-        "inline-flex justify-center items-center gap-1 text-base p-2 bg-emerald-700 rounded-sm hover:cursor-pointer hover:bg-emerald-600";
+        "w-full min-w-40 inline-flex justify-center items-center gap-1 text-base p-2 bg-emerald-700 rounded-sm hover:cursor-pointer hover:bg-emerald-600";
 
     if (redirectTo) {
         if (newTab) {

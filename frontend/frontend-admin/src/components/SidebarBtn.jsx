@@ -14,7 +14,7 @@ function SidebarBtn({
     let icon = hasIcon ? <LightBulb /> : null;
 
     const baseClasses =
-        "inline-flex justify-center items-center gap-1 text-base p-2 rounded-sm hover:cursor-pointer";
+        "w-full min-w-40 inline-flex justify-center items-center gap-1 text-base p-2 rounded-sm hover:cursor-pointer";
     const colorClasses =
         name === "DELETE"
             ? "bg-red-700 hover:bg-red-600 mb-1"

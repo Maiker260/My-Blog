@@ -12,12 +12,11 @@ export default async function getPost(id) {
                 },
             },
             comments: {
-                include: {
-                    user: {
-                        select: {
-                            username: true,
-                        },
-                    },
+                select: {
+                    id: true,
+                    username: true,
+                    content: true,
+                    createdAt: true,
                 },
             },
             tags: {

@@ -32,7 +32,7 @@ function PostsList() {
     }
 
     return (
-        <div className="grid grid-cols-[repeat(auto-fill,_minmax(260px,_1fr))] gap-4 auto-rows-[350px]">
+        <div className="grid grid-cols-[repeat(auto-fill,_minmax(260px,_1fr))] gap-4 auto-rows-[350px] h-full max-h-[calc(100vh-120px)] overflow-auto scrollbar-none">
             {posts.map((pst) => (
                 <Post key={pst.id} {...pst} />
             ))}

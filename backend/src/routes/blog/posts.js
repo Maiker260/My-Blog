@@ -1,6 +1,7 @@
 import express from "express";
 import getAllPosts from "../../controllers/db/posts/get-all-posts.js";
 import getPost from "../../controllers/db/posts/get-post.js";
+import postCommentsRouter from "./comments.js";
 
 const postRouter = express.Router();
 
@@ -9,11 +10,13 @@ postRouter.get("/", async (req, res) => {
     res.json(posts);
 });
 
-postRouter.get("/:id", async (req, res) => {
-    const { id } = req.params;
+postRouter.get("/:postId", async (req, res) => {
+    const { postId } = req.params;
 
-    const post = await getPost(id);
+    const post = await getPost(postId);
     res.json(post);
 });
+
+postRouter.use("/:postId/comments", postCommentsRouter);
 
 export default postRouter;
