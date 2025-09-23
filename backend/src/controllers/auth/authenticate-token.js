@@ -4,8 +4,7 @@ const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET;
 
 // Verify the token when requesting some protected Data
 export default function authenticateToken(req, res, next) {
-    const authToken = req.headers["authorization"];
-    const token = authToken && authToken.split(" ")[1];
+    const token = req.cookies?.accessToken;
 
     if (!token) return res.sendStatus(401);
 

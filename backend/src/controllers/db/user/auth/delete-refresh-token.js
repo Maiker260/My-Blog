@@ -7,7 +7,7 @@ export default async function deleteRefreshToken(token) {
         },
     };
 
-    const result = await dbQuery("refreshToken", "delete", args);
+    const result = await dbQuery("refreshToken", "deleteMany", args);
 
     if (result) return { success: true };
 }

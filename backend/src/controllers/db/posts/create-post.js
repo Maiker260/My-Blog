@@ -1,10 +1,8 @@
 import dbQuery from "../db-query.js";
 
-export default async function createPost({ title, tags, content }) {
-    const userId = "370dd59d-ede5-4ce8-ab9c-c33076d55ca7";
+export default async function createPost(userId, { title, tags, content }) {
     const args = {
         data: {
-            // CHANGE AND REQUEST THE USER ID
             user: { connect: { id: userId } },
             title,
             content,

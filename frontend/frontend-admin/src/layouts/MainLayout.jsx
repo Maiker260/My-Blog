@@ -4,19 +4,41 @@ import { useLocation } from "react-router-dom";
 import Navbar from "./Navbar.jsx";
 import Sidebar from "./Sidebar.jsx";
 import { getUserTags } from "../services/tag/get-user-tags.js";
+import { getUser } from "../services/user/get-user.js";
 
 function MainLayout() {
+    const location = useLocation();
     const [availableTags, setAvailableTags] = useState([]);
     const [selectedTags, setSelectedTags] = useState([]);
     const [loading, setLoading] = useState(false);
-    const location = useLocation();
+
+    // Authenticated user state
+    const [user, setUser] = useState(null);
+    const [loadingUser, setLoadingUser] = useState(true);
+
+    // Fetch user info
+    useEffect(() => {
+        const fetchUser = async () => {
+            try {
+                const data = await getUser();
+                setUser(data);
+            } catch (err) {
+                console.error("Not authenticated", err);
+                setUser(null);
+            } finally {
+                setLoadingUser(false);
+            }
+        };
+
+        fetchUser();
+    }, []);
 
     useEffect(() => {
         if (location.pathname === "/tag/edit") {
             const fetchData = async () => {
                 setLoading(true);
                 try {
-                    const data = await getUserTags();
+                    const data = await getUserTags(user.id);
                     setAvailableTags(data.map((tag) => tag.name));
                     setSelectedTags(data.map((tag) => tag.name));
                 } catch (err) {
@@ -28,7 +50,9 @@ function MainLayout() {
 
             fetchData();
         }
-    }, [location.pathname]);
+    }, [user, location.pathname]);
+
+    // if (loadingUser) return <div>Loading user...</div>;
 
     return (
         <div className="flex flex-col content-center pt-3 min-h-screen">
@@ -41,11 +65,16 @@ function MainLayout() {
                         selectedTags,
                         setSelectedTags,
                         loading,
+                        loadingUser,
+                        user,
                     }}
                 />
                 <Sidebar
                     selectedTags={selectedTags}
                     setSelectedTags={setSelectedTags}
+                    user={user}
+                    setUser={setUser}
+                    loadingUser={loadingUser}
                 />
             </div>
         </div>

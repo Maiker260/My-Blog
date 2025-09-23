@@ -8,6 +8,7 @@ export async function deleteComment(postId, commentId) {
             headers: {
                 "Content-Type": "application/json",
             },
+            credentials: "include",
         }
     );
 

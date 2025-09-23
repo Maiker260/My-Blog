@@ -29,8 +29,30 @@ loginRouter.post("/", async (req, res) => {
 
             addRefreshToken(user.id, plainRefreshToken);
 
-            // NEED TO STORE THE TOKENS INTO THE CLIENT'S COOKIES
-            res.json({ accessToken, plainRefreshToken });
+            // Set cookies
+            res.cookie("accessToken", accessToken, {
+                httpOnly: true,
+                secure: process.env.NODE_ENV === "production",
+                sameSite: "lax",
+                maxAge: 15 * 60 * 1000, // 15 minutes
+            });
+
+            res.cookie("refreshToken", plainRefreshToken, {
+                httpOnly: true,
+                secure: process.env.NODE_ENV === "production",
+                sameSite: "lax",
+                maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+            });
+
+            // Return user info for frontend
+            res.json({
+                message: "Login successful",
+                user: {
+                    id: user.id,
+                    username: user.username,
+                    isAdmin: user.isAdmin,
+                },
+            });
         } else {
             res.send("Incorrect user or password");
         }

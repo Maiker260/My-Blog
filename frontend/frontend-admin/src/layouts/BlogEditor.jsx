@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useOutletContext } from "react-router-dom";
 import BlogComments from "../components/Blog/blog-editor/BlogComments.jsx";
 import BlogContent from "../components/Blog/blog-editor/BlogContent.jsx";
 import BlogTitle from "../components/Blog/blog-editor/BlogTitle.jsx";
@@ -13,6 +13,8 @@ import formatDate from "../utils/format-date.js";
 import LoadingBanner from "../components/LoadingBanner.jsx";
 
 function BlogEditor() {
+    const { user } = useOutletContext();
+
     const [editMode, setEditMode] = useState(false);
     const [loading, setLoading] = useState(true);
     const [submitting, setSubmitting] = useState(false);
@@ -25,17 +27,18 @@ function BlogEditor() {
     const [date, setDate] = useState({});
 
     const navigate = useNavigate();
-    const { id } = useParams();
+    const { id: postId } = useParams();
 
     useEffect(() => {
+        if (!user) return;
+
         const fetchData = async () => {
             try {
-                const tags = await getUserTags();
+                const tags = await getUserTags(user.id);
                 setAvailableTags(tags.map((tag) => tag.name) || []);
 
-                if (id) {
-                    // const data = await getPost(userId, postiId);
-                    const data = await getPost(id);
+                if (postId) {
+                    const data = await getPost(user.id, postId);
 
                     setEditMode(true);
                     setSelectedTags(data.tags.map((tag) => tag.name) || []);
@@ -63,7 +66,7 @@ function BlogEditor() {
         };
 
         fetchData();
-    }, [id]);
+    }, [user, postId]);
 
     const resetForm = () => {
         setTitle("");
@@ -71,8 +74,8 @@ function BlogEditor() {
         setContent("");
     };
 
-    if (loading) {
-        return <Loading message={"Loading Post Data"} />;
+    if (loading || !user) {
+        return <Loading message="Loading post data..." />;
     }
 
     return (
@@ -81,7 +84,8 @@ function BlogEditor() {
                 setSubmitting(true);
                 try {
                     await handleSubmit(e, {
-                        id,
+                        user,
+                        postId,
                         title,
                         selectedTags,
                         content,

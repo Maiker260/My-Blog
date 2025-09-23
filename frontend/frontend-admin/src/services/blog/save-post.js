@@ -1,7 +1,6 @@
 const API_URL = import.meta.env.VITE_API_URL;
 
-export async function savePost(post, postId) {
-    const userId = 1;
+export async function savePost(userId, post, postId) {
     const isExistingPost = Boolean(postId);
 
     const method = isExistingPost ? "PUT" : "POST";
@@ -16,6 +15,7 @@ export async function savePost(post, postId) {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(post),
+            credentials: "include",
         });
 
         if (!response.ok) {

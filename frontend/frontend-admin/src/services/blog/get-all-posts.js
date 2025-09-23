@@ -1,14 +1,12 @@
 const API_URL = import.meta.env.VITE_API_URL;
 
-// export async function getPosts(user) {
-export async function getAllPosts() {
-    const userId = 1;
-
+export async function getAllPosts(userId) {
     const response = await fetch(`${API_URL}/users/${userId}/posts`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
         },
+        credentials: "include",
     });
 
     if (!response.ok) {

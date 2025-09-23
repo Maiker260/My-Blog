@@ -5,14 +5,14 @@ function Sidebar() {
     const location = useLocation();
     const pathUrl = location.pathname;
 
-    const isPostView = pathUrl.startsWith("/posts/");
+    const isHome = pathUrl === "/";
 
     return (
         <article className="flex">
             <div className="flex flex-col gap-4 mt-20">
-                {isPostView ? (
+                {isHome ? null : (
                     <SidebarBtn name={"Back to Home"} redirectTo={"/"} />
-                ) : null}
+                )}
                 <SidebarBtn
                     name={"My Code "}
                     redirectTo={"https://github.com/Maiker260/My-Blog"}

@@ -3,6 +3,7 @@ import BlogEditor from "../layouts/BlogEditor.jsx";
 import BlogList from "../layouts/BlogList.jsx";
 import BlogPreview from "../layouts/BlogPreview.jsx";
 import TagEditor from "../layouts/TagEditor.jsx";
+import NotFound from "../pages/NotFound.jsx";
 
 const routes = [
     {
@@ -14,9 +15,9 @@ const routes = [
             { path: "/posts/edit/:id", element: <BlogEditor /> },
             { path: "/posts/preview/:id", element: <BlogPreview /> },
             { path: "/tag/edit", element: <TagEditor /> },
+            { path: "*", element: <NotFound /> },
         ],
     },
-    // {ERROR WEPBAGE},
 ];
 
 export default routes;

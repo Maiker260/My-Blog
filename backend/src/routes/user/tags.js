@@ -1,12 +1,12 @@
 import express from "express";
 import updateUserTags from "../../controllers/db/user/tags/update-user-tags.js";
 import getUserTags from "../../controllers/db/user/tags/get-user-tags.js";
+import authenticateToken from "../../controllers/auth/authenticate-token.js";
 
 const userTagsRouter = express.Router({ mergeParams: true });
 
-userTagsRouter.get("/", async (req, res) => {
-    // const { userId } = req.params;
-    const userId = "370dd59d-ede5-4ce8-ab9c-c33076d55ca7";
+userTagsRouter.get("/", authenticateToken, async (req, res) => {
+    const userId = req.user.id;
 
     try {
         const tags = await getUserTags(userId);
@@ -17,10 +17,9 @@ userTagsRouter.get("/", async (req, res) => {
     }
 });
 
-userTagsRouter.put("/", async (req, res) => {
-    // const { userId } = req.params;
+userTagsRouter.put("/", authenticateToken, async (req, res) => {
+    const userId = req.user.id;
     const tags = req.body;
-    const userId = "370dd59d-ede5-4ce8-ab9c-c33076d55ca7";
 
     try {
         const newTags = await updateUserTags(userId, tags);

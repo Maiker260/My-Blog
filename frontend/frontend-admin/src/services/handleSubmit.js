@@ -2,7 +2,7 @@ import { savePost } from "./blog/save-post.js";
 
 export async function handleSubmit(
     e,
-    { id, title, selectedTags, content, reset, navigate }
+    { user, postId, title, selectedTags, content, reset, navigate }
 ) {
     e.preventDefault();
 
@@ -13,7 +13,7 @@ export async function handleSubmit(
 
     const post = { title, tags: selectedTags, content };
 
-    const result = await savePost(post, id);
+    const result = await savePost(user.id, post, postId);
 
     if (!result.ok) {
         alert("Failed to save post. Please try again.");

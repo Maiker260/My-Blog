@@ -1,6 +1,7 @@
 import express from "express";
 import addComment from "../../controllers/db/posts/add-comment.js";
 import deleteComment from "../../controllers/db/comments/delete-comment.js";
+import authenticateToken from "../../controllers/auth/authenticate-token.js";
 
 const postCommentsRouter = express.Router({ mergeParams: true });
 
@@ -17,16 +18,20 @@ postCommentsRouter.post("/", async (req, res) => {
     }
 });
 
-postCommentsRouter.delete("/:commentId", async (req, res) => {
-    const { postId, commentId } = req.params;
+postCommentsRouter.delete(
+    "/:commentId",
+    authenticateToken,
+    async (req, res) => {
+        const { postId, commentId } = req.params;
 
-    try {
-        const result = await deleteComment(res, postId, commentId);
-        res.json(result.success);
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ message: "Internal server error" });
+        try {
+            const result = await deleteComment(res, postId, commentId);
+            res.json(result.success);
+        } catch (err) {
+            console.error(err);
+            res.status(500).json({ message: "Internal server error" });
+        }
     }
-});
+);
 
 export default postCommentsRouter;

@@ -1,9 +1,11 @@
 import dbQuery from "../db-query.js";
 import getTagsToRemove from "./utils/get-tags-to-remove.js";
 
-// export default async function updatePost(userId, postId, { title, tags, content }) {
-export default async function updatePost(postId, { title, tags, content }) {
-    const userId = "370dd59d-ede5-4ce8-ab9c-c33076d55ca7";
+export default async function updatePost(
+    userId,
+    postId,
+    { title, tags, content }
+) {
     const args = {
         where: {
             id: postId,
