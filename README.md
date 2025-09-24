@@ -106,7 +106,7 @@ Follow these steps to run the project locally:
 
    **Main**
 
-    ` /api`
+-   `/api`
 
    **Auth**
 
@@ -118,7 +118,7 @@ Follow these steps to run the project locally:
 
    **Users**
 
-    `/userId`
+-   `/userId`
 
 -   `GET /posts` (protected)
 -   `GET /posts/:id` (protected)
