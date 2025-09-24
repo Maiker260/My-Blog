@@ -75,26 +75,26 @@ Follow these steps to run the project locally:
 
 ## Features
 
--   **User Authentication**
+   **User Authentication**
 
 -   Sign up and login
 -   Passwords hashed with **bcrypt**
 -   JWT-based session management
 -   Admin and author roles for route protection
 
--   **Posts**
+   **Posts**
 
 -   Create, edit, delete posts (protected routes)
 -   Publish/unpublish posts
 -   Fetch and display posts to users
 -   Timestamp and author linked to each post
 
--   **Comments**
+   **Comments**
 
 -   Add, edit, delete comments
 -   Admins can manage all comments
 
--   **Frontend**
+   **Frontend**
 
 -   List of all posts
 -   Author/admin panel for managing posts and comments
@@ -104,11 +104,11 @@ Follow these steps to run the project locally:
 
 ## API
 
--   **Main**
+   **Main**
 
     ` /api`
 
--   **Auth**
+   **Auth**
 
 -   `POST /auth/signup`
 -   `POST /auth/login`
@@ -116,7 +116,7 @@ Follow these steps to run the project locally:
 -   `POST /auth/refresh`
 -   `GET /auth/me` (protected)
 
--   **Users**
+   **Users**
 
     `/userId`
 
@@ -129,12 +129,12 @@ Follow these steps to run the project locally:
 -   `GET /tags/` (protected)
 -   `PUT /tags/` (protected)
 
--   **Posts**
+   **Posts**
 
 -   `GET /posts`
 -   `GET /posts/:id`
 
--   **Tags**
+   **Tags**
 
 -   `GET /tags`
 
