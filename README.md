@@ -26,8 +26,8 @@ Follow these steps to run the project locally:
 3.  **Set up PostgreSQL**
 
     ```
-    -   Create a database (e.g., `blog_app`)
-    -   Add a `.env` file with the following variables:
+    Create a database (e.g., `blog_app`)
+    Add a `.env` file with the following variables:
 
         PORT=""
         DATABASE_URL=""
