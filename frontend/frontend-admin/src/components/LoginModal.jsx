@@ -1,7 +1,6 @@
 import { useState } from "react";
-import LoadingBanner from "./LoadingBanner.jsx";
 
-function LoginModal({ isOpen, onClose, onSubmit, submitting }) {
+function LoginModal({ isOpen, onClose, onSubmit }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
@@ -16,7 +15,6 @@ function LoginModal({ isOpen, onClose, onSubmit, submitting }) {
 
     return (
         <div className="text-neutral-700 fixed inset-0 flex items-center justify-center bg-black/70">
-            {/* <LoadingBanner show={submitting} message="Loading..." /> */}
             <div className="bg-white rounded-lg shadow-lg w-96 max-w-full p-6">
                 <h2 className="text-xl text-center font-semibold mb-4">
                     Login
