@@ -19,8 +19,8 @@ refreshRouter.post("/", async (req, res) => {
 
     res.cookie("accessToken", newAccessToken, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "lax",
+        secure: true,
+        sameSite: "none",
         maxAge: 15 * 60 * 1000, // 15 min
     });
 

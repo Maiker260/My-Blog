@@ -21,7 +21,7 @@ export default async function updatePost(
 
                 disconnect: (await getTagsToRemove(postId, tags)).map(
                     (tag) => ({
-                        userId_name: { userId, name: tag },
+                        userId_name: { userId, name: tag.name },
                     })
                 ),
             },

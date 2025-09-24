@@ -8,7 +8,7 @@ function BlogList() {
     const { user, loadingUser } = useOutletContext();
 
     const [posts, setPosts] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -35,10 +35,18 @@ function BlogList() {
     }, [user]);
 
     if (loadingUser || loading) {
-        return <Loading message={"Loading Posts"} />;
+        return <Loading message="Loading Posts" />;
     }
 
-    if (!user || posts.length === 0) {
+    if (!user) {
+        return (
+            <section className="text-gray-400 flex justify-center items-center h-full">
+                Please log in to view your posts.
+            </section>
+        );
+    }
+
+    if (posts.length === 0) {
         return (
             <section className="text-gray-500 flex justify-center items-center h-full">
                 No posts available.

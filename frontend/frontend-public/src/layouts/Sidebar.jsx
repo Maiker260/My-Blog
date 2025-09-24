@@ -18,7 +18,7 @@ function Sidebar() {
                     redirectTo={"https://github.com/Maiker260/My-Blog"}
                     newTab
                 />
-                <SidebarBtn name={"About"} />
+                {/* <SidebarBtn name={"About"} /> */}
             </div>
         </article>
     );

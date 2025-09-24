@@ -8,5 +8,5 @@ export default async function getTagsToRemove(postId, newTags) {
 
     return post.tags
         .filter((tag) => !newTags.includes(tag.name))
-        .map((tag) => ({ id: tag.id }));
+        .map((tag) => ({ id: tag.id, name: tag.name }));
 }

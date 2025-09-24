@@ -62,6 +62,7 @@ function Sidebar({
             console.error("Error saving tags:", err);
         } finally {
             setSubmitting(false);
+            setLoadingMessage("");
         }
     };
 
@@ -80,11 +81,13 @@ function Sidebar({
             console.error("Error Deleting Post:", err);
         } finally {
             setSubmitting(false);
+            setLoadingMessage("");
         }
     };
 
     const handleLogin = async (data) => {
         setSubmitting(true);
+        setLoadingMessage("Logging In");
         try {
             const user = await authUser(data);
             setUser(user);
@@ -93,11 +96,13 @@ function Sidebar({
         } finally {
             setSubmitting(false);
             setLoginModalOpen(false);
+            setLoadingMessage("");
         }
     };
 
     const handleSignUp = async (data) => {
         setSubmitting(true);
+        setLoadingMessage("Signing Up");
         try {
             await signUp(data);
         } catch (err) {
@@ -105,6 +110,7 @@ function Sidebar({
         } finally {
             setSubmitting(false);
             setSignUpModalOpen(false);
+            setLoadingMessage("");
         }
     };
 
@@ -118,6 +124,7 @@ function Sidebar({
             console.error("Logout failed", err);
         } finally {
             setSubmitting(false);
+            setLoadingMessage("");
         }
     };
 

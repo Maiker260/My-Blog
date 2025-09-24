@@ -19,22 +19,16 @@ function MainLayout() {
     // Fetch user info
     useEffect(() => {
         const fetchUser = async () => {
-            try {
-                const data = await getUser();
-                setUser(data);
-            } catch (err) {
-                console.error("Not authenticated", err);
-                setUser(null);
-            } finally {
-                setLoadingUser(false);
-            }
+            const data = await getUser();
+            setUser(data);
+            setLoadingUser(false);
         };
 
         fetchUser();
     }, []);
 
     useEffect(() => {
-        if (location.pathname === "/tag/edit") {
+        if (user && location.pathname === "/tag/edit") {
             const fetchData = async () => {
                 setLoading(true);
                 try {
@@ -51,8 +45,6 @@ function MainLayout() {
             fetchData();
         }
     }, [user, location.pathname]);
-
-    // if (loadingUser) return <div>Loading user...</div>;
 
     return (
         <div className="flex flex-col content-center pt-3 min-h-screen">

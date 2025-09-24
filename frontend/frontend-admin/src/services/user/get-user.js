@@ -1,24 +1,46 @@
 const API_URL = import.meta.env.VITE_API_URL;
 
-export async function getUser() {
-    const response = await fetch(`${API_URL}/auth/me`, {
-        method: "GET",
-        credentials: "include",
-    });
+function hasCookie(name) {
+    return document.cookie
+        .split(";")
+        .some((c) => c.trim().startsWith(name + "="));
+}
 
-    if (response.status === 401) {
-        // Try to refresh token
-        const refreshed = await fetch(`${API_URL}/auth/refresh`, {
-            method: "POST",
+export async function getUser() {
+    if (!hasCookie("accessToken") && !hasCookie("refreshToken")) {
+        return null;
+    }
+
+    try {
+        const response = await fetch(`${API_URL}/auth/me`, {
+            method: "GET",
             credentials: "include",
         });
 
-        if (!refreshed.ok) throw new Error("Not authenticated");
+        if (response.status === 401) {
+            if (!hasCookie("refreshToken")) {
+                return null;
+            }
 
-        // Retry fetching user after refresh
-        return getUser();
+            const refreshed = await fetch(`${API_URL}/auth/refresh`, {
+                method: "POST",
+                credentials: "include",
+            });
+
+            if (!refreshed.ok) {
+                return null;
+            }
+
+            return getUser();
+        }
+
+        if (!response.ok) {
+            return null;
+        }
+
+        return await response.json();
+    } catch (err) {
+        console.warn("getUser failed:", err);
+        return null;
     }
-
-    if (!response.ok) throw new Error("Not authenticated");
-    return response.json();
 }
