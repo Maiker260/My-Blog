@@ -5,7 +5,6 @@ export async function getUser() {
         method: "GET",
         credentials: "include",
     });
-    console.log(response.status);
 
     if (response.status === 401) {
         // Try to refresh token
